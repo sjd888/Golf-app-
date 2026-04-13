@@ -1,0 +1,44 @@
+{
+  "entities": {
+    "Game": {
+      "title": "Game",
+      "description": "A golf game session for a group of players",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string", "description": "Name of the game/room" },
+        "courseName": { "type": "string" },
+        "courseHoles": { "type": "array" },
+        "players": { "type": "array" },
+        "hole": { "type": "number" },
+        "status": { "type": "string", "enum": ["active", "finished"] },
+        "scoringType": { "type": "string", "enum": ["stableford", "stroke"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "createdBy": { "type": "string" }
+      },
+      "required": ["name", "courseName", "courseHoles", "players", "hole", "status", "createdAt", "createdBy"]
+    },
+    "User": {
+      "title": "User",
+      "description": "User profile data",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["user", "admin"] }
+      },
+      "required": ["uid", "email"]
+    }
+  },
+  "firestore": {
+    "/games/{gameId}": {
+      "schema": "Game",
+      "description": "Collection of active and finished golf games"
+    },
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    }
+  }
+}

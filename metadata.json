@@ -1,0 +1,5 @@
+{
+  "name": "Darcy's Pro Golf",
+  "description": "A professional golf tracking app with GPS distance measuring, Stableford scoring, and round analytics.",
+  "requestFramePermissions": ["geolocation"]
+}
